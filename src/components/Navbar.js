@@ -5,7 +5,7 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 50);
+    const onScroll = () => setScrolled(window.scrollY > 40);
     window.addEventListener('scroll', onScroll);
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
@@ -16,37 +16,52 @@ export default function Navbar() {
     { href: '#experience', label: 'Experience' },
     { href: '#projects', label: 'Projects' },
     { href: '#education', label: 'Education' },
-    { href: '#contact', label: "Let's Talk" },
+    { href: '#contact', label: 'Contact' },
   ];
 
   const handleNav = (href) => {
     setMenuOpen(false);
-    document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
+    const target = document.querySelector(href);
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   return (
-    <nav className={`navbar${scrolled ? ' scrolled' : ''}`}>
-      <div className="nav-logo">MK.</div>
+    <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
+      <div className="navbar-container">
+        <a href="#hero" className="nav-logo" onClick={(e) => { e.preventDefault(); handleNav('#hero'); }}>
+          <span className="logo-badge">MK</span>
+          <span className="logo-text">Manish Kumar</span>
+        </a>
 
-      <ul className={`nav-links${menuOpen ? ' open' : ''}`}>
-        {links.map((l) => (
-          <li key={l.href}>
-            <a
-              href={l.href}
-              className={l.href === '#contact' ? 'nav-cta' : ''}
-              onClick={(e) => { e.preventDefault(); handleNav(l.href); }}
-            >
-              {l.label}
-            </a>
-          </li>
-        ))}
-      </ul>
+        <ul className={`nav-links ${menuOpen ? 'open' : ''}`}>
+          {links.map((l) => (
+            <li key={l.href}>
+              <a
+                href={l.href}
+                className={l.href === '#contact' ? 'nav-cta' : ''}
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleNav(l.href);
+                }}
+              >
+                {l.label}
+              </a>
+            </li>
+          ))}
+        </ul>
 
-      <button className="hamburger" onClick={() => setMenuOpen(!menuOpen)} aria-label="Toggle menu">
-        <span style={{ transform: menuOpen ? 'rotate(45deg) translate(5px, 5px)' : '' }} />
-        <span style={{ opacity: menuOpen ? 0 : 1 }} />
-        <span style={{ transform: menuOpen ? 'rotate(-45deg) translate(5px, -5px)' : '' }} />
-      </button>
+        <button
+          className={`hamburger ${menuOpen ? 'active' : ''}`}
+          onClick={() => setMenuOpen(!menuOpen)}
+          aria-label="Toggle navigation menu"
+        >
+          <span />
+          <span />
+          <span />
+        </button>
+      </div>
     </nav>
   );
 }
