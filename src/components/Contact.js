@@ -19,24 +19,32 @@ export default function Contact() {
   };
 
   return (
-    <section className="section section-alt" id="contact">
+    <section className="section" id="contact">
       <div className="section-container">
         <div className="section-header">
           <span className="section-badge">Get In Touch</span>
           <h2 className="section-heading">Contact Information</h2>
           <p className="section-subtext">
-            Feel free to reach out for backend development roles, API integrations, or collaboration opportunities.
+            Have a project in mind or an open backend developer role? Feel free to reach out directly.
           </p>
         </div>
 
         <div className="contact-layout">
-          {/* Contact Details Column */}
+          {/* Left Column: Direct Contacts */}
           <div className="contact-details-col">
-            <h3 className="contact-col-title">Let's Discuss Your Project</h3>
-            <p className="contact-col-desc">
-              I am actively looking for backend engineering opportunities where I can apply my Laravel, PHP, MySQL,
-              and API development experience to build reliable and scalable software.
-            </p>
+            <div className="availability-card">
+              <div className="availability-header">
+                <span className="status-indicator-dot" />
+                <span className="availability-status">Available for Immediate Hire</span>
+              </div>
+              <p className="availability-text">
+                Actively seeking Laravel / PHP Backend Developer roles. Open to full-time, contract, and remote positions.
+              </p>
+              <div className="availability-meta">
+                <span>⚡ Response Time: &lt; 24 Hours</span>
+                <span>📍 India (Open to Remote)</span>
+              </div>
+            </div>
 
             <div className="contact-cards-stack">
               {/* Phone Card */}
@@ -50,13 +58,18 @@ export default function Contact() {
                   <span className="contact-card-label">Direct Phone</span>
                   <a href="tel:9507262310" className="contact-card-link">+91 9507262310</a>
                 </div>
-                <button
-                  className="copy-btn"
-                  onClick={() => handleCopy('9507262310', 'phone')}
-                  title="Copy Phone Number"
-                >
-                  {copiedType === 'phone' ? 'Copied!' : 'Copy'}
-                </button>
+                <div className="contact-actions-right">
+                  <button
+                    className="copy-btn"
+                    onClick={() => handleCopy('9507262310', 'phone')}
+                    title="Copy Phone Number"
+                  >
+                    {copiedType === 'phone' ? '✓ Copied' : 'Copy'}
+                  </button>
+                  <a href="tel:9507262310" className="icon-action-btn" title="Call directly">
+                    Call
+                  </a>
+                </div>
               </div>
 
               {/* Email Card */}
@@ -73,13 +86,18 @@ export default function Contact() {
                     manishkr211120002@gmail.com
                   </a>
                 </div>
-                <button
-                  className="copy-btn"
-                  onClick={() => handleCopy('manishkr211120002@gmail.com', 'email')}
-                  title="Copy Email Address"
-                >
-                  {copiedType === 'email' ? 'Copied!' : 'Copy'}
-                </button>
+                <div className="contact-actions-right">
+                  <button
+                    className="copy-btn"
+                    onClick={() => handleCopy('manishkr211120002@gmail.com', 'email')}
+                    title="Copy Email Address"
+                  >
+                    {copiedType === 'email' ? '✓ Copied' : 'Copy'}
+                  </button>
+                  <a href="mailto:manishkr211120002@gmail.com" className="icon-action-btn" title="Send email">
+                    Email
+                  </a>
+                </div>
               </div>
 
               {/* Professional Links */}
@@ -95,7 +113,10 @@ export default function Contact() {
                     <rect x="2" y="9" width="4" height="12"/>
                     <circle cx="4" cy="4" r="2"/>
                   </svg>
-                  <span>LinkedIn Profile</span>
+                  <div>
+                    <span className="social-name">LinkedIn</span>
+                    <span className="social-sub">Professional Network</span>
+                  </div>
                 </a>
 
                 <a
@@ -107,47 +128,52 @@ export default function Contact() {
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
                   </svg>
-                  <span>GitHub Profile</span>
+                  <div>
+                    <span className="social-name">GitHub</span>
+                    <span className="social-sub">Code Repositories</span>
+                  </div>
                 </a>
               </div>
             </div>
           </div>
 
-          {/* Form Column */}
+          {/* Right Column: Contact Form */}
           <div className="contact-form-col">
             <div className="form-card">
-              <h3 className="form-card-title">Send a Message</h3>
+              <h3 className="form-card-title">Send a Direct Message</h3>
 
               {formSubmitted && (
                 <div className="form-alert-success">
                   <span className="success-icon">✓</span>
-                  <span>Thank you! Your message has been received. I will reply shortly.</span>
+                  <span>Thank you! Your message has been sent. I will get back to you shortly.</span>
                 </div>
               )}
 
               <form onSubmit={handleSubmit} className="contact-form-inner">
-                <div className="form-field">
-                  <label htmlFor="user-name">Your Name</label>
-                  <input
-                    id="user-name"
-                    type="text"
-                    required
-                    placeholder="Enter your name"
-                    value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  />
-                </div>
+                <div className="form-row-2">
+                  <div className="form-field">
+                    <label htmlFor="user-name">Your Name</label>
+                    <input
+                      id="user-name"
+                      type="text"
+                      required
+                      placeholder="e.g. Alex Smith"
+                      value={formData.name}
+                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    />
+                  </div>
 
-                <div className="form-field">
-                  <label htmlFor="user-email">Email Address</label>
-                  <input
-                    id="user-email"
-                    type="email"
-                    required
-                    placeholder="name@example.com"
-                    value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  />
+                  <div className="form-field">
+                    <label htmlFor="user-email">Email Address</label>
+                    <input
+                      id="user-email"
+                      type="email"
+                      required
+                      placeholder="alex@company.com"
+                      value={formData.email}
+                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    />
+                  </div>
                 </div>
 
                 <div className="form-field">
@@ -156,7 +182,7 @@ export default function Contact() {
                     id="user-subject"
                     type="text"
                     required
-                    placeholder="e.g. Job Opportunity / Project Discussion"
+                    placeholder="e.g. Laravel Developer Opportunity / Project Inquiry"
                     value={formData.subject}
                     onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
                   />
@@ -168,7 +194,7 @@ export default function Contact() {
                     id="user-message"
                     rows="4"
                     required
-                    placeholder="Write your message here..."
+                    placeholder="Tell me about your requirements, project, or role..."
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   />

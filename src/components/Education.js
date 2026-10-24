@@ -1,75 +1,89 @@
 export default function Education() {
   const competencies = [
     {
-      title: 'Scalable Architecture',
-      desc: 'Building modular code bases following MVC principles, service layers, and repository patterns in Laravel.',
-      icon: '🏛️',
+      title: 'Relational Database Design',
+      desc: 'Schema normalization, foreign key constraints, indexing strategies, and ACID transaction safety in MySQL.',
+      badge: 'Database',
     },
     {
-      title: 'API & Data Security',
-      desc: 'Implementing secure token authentication, input validation, CSRF protection, and error handling.',
-      icon: '🔒',
+      title: 'REST API Architecture',
+      desc: 'Resource-oriented design, request validation, Sanctum/token authentication, and consistent JSON responses.',
+      badge: 'API Design',
     },
     {
-      title: 'DevOps & Server Hosting',
-      desc: 'Hands-on management of DNS, SSL renewals, Cloudflare proxying, EC2 server setups, and aaPanel/cPanel hosting.',
-      icon: '🚀',
+      title: 'Payment & Wallet Systems',
+      desc: 'Stripe subscription checkouts, automated customer billing, idempotent webhook handling, and wallet balances.',
+      badge: 'Fintech',
     },
     {
-      title: 'Continuous Troubleshooting',
-      desc: 'Diagnosing production incidents, database slow queries, email delivery bottlenecks, and API integrations.',
-      icon: '🔍',
+      title: 'Server Operations & Hosting',
+      desc: 'AWS EC2 setups, Cloudflare DNS & SSL certificates, aaPanel/cPanel hosting, and SMTP deliverability (SPF/DKIM).',
+      badge: 'Infrastructure',
     },
   ];
 
   return (
-    <section className="section" id="education">
+    <section className="section section-alt" id="education">
       <div className="section-container">
         <div className="section-header">
-          <span className="section-badge">Academic Background</span>
+          <span className="section-badge">Academic & Foundation</span>
           <h2 className="section-heading">Education & Core Competencies</h2>
           <p className="section-subtext">
-            Strong engineering foundation combined with specialized hands-on software development expertise.
+            Strong analytical engineering foundation combined with specialized backend software development.
           </p>
         </div>
 
         <div className="education-layout">
+          {/* Main University Degree Card */}
           <div className="education-main-card">
             <div className="education-badge">Graduated 2023</div>
-            <div className="education-icon-box">🎓</div>
-            <h3 className="education-degree">B.Tech in Electrical Engineering</h3>
-            <p className="education-institution">
-              Maulana Abul Kalam Azad University of Technology (MAKAUT)
-            </p>
+
+            <div className="education-header-area">
+              <div className="education-icon-box">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                  <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+                </svg>
+              </div>
+              <div>
+                <h3 className="education-degree">B.Tech in Electrical Engineering</h3>
+                <p className="education-institution">
+                  Maulana Abul Kalam Azad University of Technology (MAKAUT)
+                </p>
+              </div>
+            </div>
+
             <p className="education-desc">
-              Rigorous engineering curriculum providing a solid analytical foundation in systems, logic,
-              problem-solving, and computational mathematics, transitioned into specialized backend software development.
+              Completed an intensive 4-year engineering curriculum with focus on analytical problem-solving,
+              system modeling, and mathematical logic. Successfully transitioned these rigorous analytical
+              principles into modern backend engineering, building reliable web applications and API services.
             </p>
 
             <div className="education-meta-strip">
               <div className="meta-item">
                 <span className="meta-label">Degree</span>
-                <span className="meta-val">Bachelor of Technology</span>
+                <span className="meta-val">B.Tech</span>
               </div>
               <div className="meta-item">
-                <span className="meta-label">Completion Year</span>
+                <span className="meta-label">Graduation Year</span>
                 <span className="meta-val">2023</span>
               </div>
               <div className="meta-item">
-                <span className="meta-label">Focus Area</span>
+                <span className="meta-label">Specialization</span>
                 <span className="meta-val">Backend Software Eng.</span>
               </div>
             </div>
           </div>
 
+          {/* Competencies Grid */}
           <div className="competencies-grid">
             {competencies.map((c) => (
               <div className="competency-card" key={c.title}>
-                <span className="competency-icon">{c.icon}</span>
-                <div>
+                <div className="comp-card-top">
                   <h4 className="competency-title">{c.title}</h4>
-                  <p className="competency-desc">{c.desc}</p>
+                  <span className="comp-badge">{c.badge}</span>
                 </div>
+                <p className="competency-desc">{c.desc}</p>
               </div>
             ))}
           </div>
